@@ -1,0 +1,799 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Java虚拟机（jvm） · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="搞定JVM垃圾回收就是这么简单.html" />
+    
+    
+    <link rel="prev" href="Java基础知识.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    [Java相关]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="ArrayList.html">
+            
+                <a href="ArrayList.html">
+            
+                    
+                    ArrayList
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="HashMap.html">
+            
+                <a href="HashMap.html">
+            
+                    
+                    HashMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="LinkedList.html">
+            
+                <a href="LinkedList.html">
+            
+                    
+                    LinkedList
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="J2EE基础知识.html">
+            
+                <a href="J2EE基础知识.html">
+            
+                    
+                    J2EE基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="Java IO与NIO.html">
+            
+                <a href="Java IO与NIO.html">
+            
+                    
+                    Java IO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="Java基础知识.html">
+            
+                <a href="Java基础知识.html">
+            
+                    
+                    Java基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.7" data-path="Java虚拟机（jvm）.html">
+            
+                <a href="Java虚拟机（jvm）.html">
+            
+                    
+                    Java虚拟机（jvm）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="搞定JVM垃圾回收就是这么简单.html">
+            
+                <a href="搞定JVM垃圾回收就是这么简单.html">
+            
+                    
+                    Java 垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="可能是把Java内存区域讲的最清楚的一篇文章.html">
+            
+                <a href="可能是把Java内存区域讲的最清楚的一篇文章.html">
+            
+                    
+                    Java 内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="多线程系列.html">
+            
+                <a href="多线程系列.html">
+            
+                    
+                    Java 多线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="thread-safe.html">
+            
+                <a href="thread-safe.html">
+            
+                    
+                    Java 线程安全
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="Java集合框架常见面试题总结.html">
+            
+                <a href="Java集合框架常见面试题总结.html">
+            
+                    
+                    Java集合框架常见面试题总结1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="这几道Java集合框架面试题几乎必问.html">
+            
+                <a href="这几道Java集合框架面试题几乎必问.html">
+            
+                    
+                    Java集合框架常见面试题总结2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="设计模式.html">
+            
+                <a href="设计模式.html">
+            
+                    
+                    设计模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    [Spring相关]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../主流框架/Spring学习与面试.html">
+            
+                <a href="../主流框架/Spring学习与面试.html">
+            
+                    
+                    Spring
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../操作系统/后端程序员必备的Linux基础知识.html">
+            
+                <a href="../操作系统/后端程序员必备的Linux基础知识.html">
+            
+                    
+                    Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    [数据库]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../数据存储/MySQL/MySQL.html">
+            
+                <a href="../数据存储/MySQL/MySQL.html">
+            
+                    
+                    Mysql
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="../数据存储/MySQL/Engine.html">
+            
+                <a href="../数据存储/MySQL/Engine.html">
+            
+                    
+                    存储引擎
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.2" data-path="../数据存储/MySQL/Index.html">
+            
+                <a href="../数据存储/MySQL/Index.html">
+            
+                    
+                    索引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.3" data-path="../数据存储/MySQL/SQL.html">
+            
+                <a href="../数据存储/MySQL/SQL.html">
+            
+                    
+                    SQL优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.4" data-path="../数据存储/MySQL/Transaction.html">
+            
+                <a href="../数据存储/MySQL/Transaction.html">
+            
+                    
+                    事务
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" >
+            
+                <span>
+            
+                    
+                    [Redis]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="../数据存储/Redis.html">
+            
+                <a href="../数据存储/Redis.html">
+            
+                    
+                    Redis 基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" data-path="../数据存储/春夏秋冬又一春之Redis持久化.html">
+            
+                <a href="../数据存储/春夏秋冬又一春之Redis持久化.html">
+            
+                    
+                    Redis 持久化精讲
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.3" data-path="../数据存储/Redis常见知识点.html">
+            
+                <a href="../数据存储/Redis常见知识点.html">
+            
+                    
+                    Redis 基础知识点汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    [分布式]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../架构/distributed.html">
+            
+                <a href="../架构/distributed.html">
+            
+                    
+                    分布式锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../架构/分布式.html">
+            
+                <a href="../架构/分布式.html">
+            
+                    
+                    分布式相关
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    [计算机网络相关]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../计算机网络与数据通信/干货：计算机网络知识总结.html">
+            
+                <a href="../计算机网络与数据通信/干货：计算机网络知识总结.html">
+            
+                    
+                    网络基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../计算机网络与数据通信/数据通信(RESTful、RPC、消息队列">
+            
+                <span>
+            
+                    
+                    数据通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../计算机网络与数据通信/tcp.html">
+            
+                <a href="../计算机网络与数据通信/tcp.html">
+            
+                    
+                    Tcp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../计算机网络与数据通信/http.html">
+            
+                <a href="../计算机网络与数据通信/http.html">
+            
+                    
+                    Http
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Java虚拟机（jvm）</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>Java&#x9762;&#x8BD5;&#x901A;&#x5173;&#x624B;&#x518C;&#xFF08;Java&#x5B66;&#x4E60;&#x6307;&#x5357;&#xFF09;github&#x5730;&#x5740;&#xFF08;&#x6B22;&#x8FCE;star&#x548C;pull&#xFF09;&#xFF1A;<a href="https://github.com/Snailclimb/Java_Guide" target="_blank">https://github.com/Snailclimb/Java_Guide</a></p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x6309;jvm&#x865A;&#x62DF;&#x673A;&#x77E5;&#x8BC6;&#x70B9;&#x5206;&#x7AE0;&#x8282;&#x603B;&#x7ED3;&#x7684;&#x4E00;&#x4E9B;jvm&#x5B66;&#x4E60;&#x4E0E;&#x9762;&#x8BD5;&#x76F8;&#x5173;&#x7684;&#x4E00;&#x4E9B;&#x4E1C;&#x897F;&#x3002;&#x4E00;&#x822C;&#x4F5C;&#x4E3A;Java&#x7A0B;&#x5E8F;&#x5458;&#x5728;&#x9762;&#x8BD5;&#x7684;&#x65F6;&#x5019;&#x4E00;&#x822C;&#x4F1A;&#x95EE;&#x7684;&#x5927;&#x591A;&#x5C31;&#x662F;<strong>Java&#x5185;&#x5B58;&#x533A;&#x57DF;&#x3001;&#x865A;&#x62DF;&#x673A;&#x5783;&#x573E;&#x7B97;&#x6CD5;&#x3001;&#x865A;&#x62DF;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x3001;JVM&#x5185;&#x5B58;&#x7BA1;&#x7406;</strong>&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#x4E86;&#x3002;&#x8FD9;&#x4E9B;&#x5185;&#x5BB9;&#x53C2;&#x8003;&#x5468;&#x7684;&#x300A;&#x6DF1;&#x5165;&#x7406;&#x89E3;Java&#x865A;&#x62DF;&#x673A;&#x300B;&#x4E2D;&#x7B2C;&#x4E8C;&#x7AE0;&#x548C;&#x7B2C;&#x4E09;&#x7AE0;&#x5C31;&#x8DB3;&#x591F;&#x4E86;&#x5BF9;&#x5E94;&#x4E0B;&#x9762;&#x7684;<a href="https://link.zhihu.com/?target=https%3A//mp.weixin.qq.com/s%3F__biz%3DMzU4NDQ4MzU5OA%3D%3D%26mid%3D2247483910%26idx%3D1%26sn%3D246f39051a85fc312577499691fba89f%26chksm%3Dfd985467caefdd71f9a7c275952be34484b14f9e092723c19bd4ef557c324169ed084f868bdb%23rd" target="_blank">&#x6DF1;&#x5165;&#x7406;&#x89E3;&#x865A;&#x62DF;&#x673A;&#x4E4B;Java&#x5185;&#x5B58;&#x533A;&#x57DF;&#xFF1A;</a>&#x548C;<a href="https://link.zhihu.com/?target=https%3A//mp.weixin.qq.com/s%3F__biz%3DMzU4NDQ4MzU5OA%3D%3D%26mid%3D2247483914%26idx%3D1%26sn%3D9aa157d4a1570962c39783cdeec7e539%26chksm%3Dfd98546bcaefdd7d9f61cd356e5584e56b64e234c3a403ed93cb6d4dde07a505e3000fd0c427%23rd" target="_blank">&#x6DF1;&#x5165;&#x7406;&#x89E3;&#x865A;&#x62DF;&#x673A;&#x4E4B;&#x5783;&#x573E;&#x56DE;&#x6536;</a>&#x8FD9;&#x4E24;&#x7BC7;&#x6587;&#x7AE0;&#x3002;</p>
+<blockquote>
+<h3 id="&#x5E38;&#x89C1;&#x9762;&#x8BD5;&#x9898;">&#x5E38;&#x89C1;&#x9762;&#x8BD5;&#x9898;</h3>
+</blockquote>
+<p><a href="https://link.zhihu.com/?target=https%3A//mp.weixin.qq.com/s%3F__biz%3DMzU4NDQ4MzU5OA%3D%3D%26mid%3D2247483910%26idx%3D1%26sn%3D246f39051a85fc312577499691fba89f%26chksm%3Dfd985467caefdd71f9a7c275952be34484b14f9e092723c19bd4ef557c324169ed084f868bdb%23rd" target="_blank">&#x6DF1;&#x5165;&#x7406;&#x89E3;&#x865A;&#x62DF;&#x673A;&#x4E4B;Java&#x5185;&#x5B58;&#x533A;&#x57DF;&#xFF1A;</a></p>
+<ol>
+<li><p>&#x4ECB;&#x7ECD;&#x4E0B;Java&#x5185;&#x5B58;&#x533A;&#x57DF;&#xFF08;&#x8FD0;&#x884C;&#x65F6;&#x6570;&#x636E;&#x533A;&#xFF09;&#x3002;</p>
+</li>
+<li><p>&#x5BF9;&#x8C61;&#x7684;&#x8BBF;&#x95EE;&#x5B9A;&#x4F4D;&#x7684;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x3002;</p>
+</li>
+</ol>
+<p><a href="https://link.zhihu.com/?target=https%3A//mp.weixin.qq.com/s%3F__biz%3DMzU4NDQ4MzU5OA%3D%3D%26mid%3D2247483914%26idx%3D1%26sn%3D9aa157d4a1570962c39783cdeec7e539%26chksm%3Dfd98546bcaefdd7d9f61cd356e5584e56b64e234c3a403ed93cb6d4dde07a505e3000fd0c427%23rd" target="_blank">&#x6DF1;&#x5165;&#x7406;&#x89E3;&#x865A;&#x62DF;&#x673A;&#x4E4B;&#x5783;&#x573E;&#x56DE;&#x6536;</a></p>
+<ol>
+<li><p>&#x5982;&#x4F55;&#x5224;&#x65AD;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x6B7B;&#x4EA1;&#xFF08;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#xFF09;&#x3002;</p>
+</li>
+<li><p>&#x7B80;&#x5355;&#x7684;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;&#x5F3A;&#x5F15;&#x7528;&#x3001;&#x8F6F;&#x5F15;&#x7528;&#x3001;&#x5F31;&#x5F15;&#x7528;&#x3001;&#x865A;&#x5F15;&#x7528;&#xFF08;&#x865A;&#x5F15;&#x7528;&#x4E0E;&#x8F6F;&#x5F15;&#x7528;&#x548C;&#x5F31;&#x5F15;&#x7528;&#x7684;&#x533A;&#x522B;&#x3001;&#x4F7F;&#x7528;&#x8F6F;&#x5F15;&#x7528;&#x80FD;&#x5E26;&#x6765;&#x7684;&#x597D;&#x5904;&#xFF09;&#x3002;</p>
+</li>
+<li><p>&#x5783;&#x573E;&#x6536;&#x96C6;&#x6709;&#x54EA;&#x4E9B;&#x7B97;&#x6CD5;&#xFF0C;&#x5404;&#x81EA;&#x7684;&#x7279;&#x70B9;&#xFF1F;</p>
+</li>
+<li><p>HotSpot&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x5206;&#x4E3A;&#x65B0;&#x751F;&#x4EE3;&#x548C;&#x8001;&#x5E74;&#x4EE3;&#xFF1F;</p>
+</li>
+<li><p>&#x5E38;&#x89C1;&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x6709;&#x90A3;&#x4E9B;&#xFF1F;</p>
+</li>
+<li><p>&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;CMS,G1&#x6536;&#x96C6;&#x5668;&#x3002;</p>
+</li>
+<li><p>Minor Gc&#x548C;Full GC &#x6709;&#x4EC0;&#x4E48;&#x4E0D;&#x540C;&#x5462;&#xFF1F;</p>
+</li>
+</ol>
+<p><a href="https://link.zhihu.com/?target=https%3A//mp.weixin.qq.com/s%3F__biz%3DMzU4NDQ4MzU5OA%3D%3D%26mid%3D2247483922%26idx%3D1%26sn%3D0695ff4c2700ccebb8fbc39011866bd8%26chksm%3Dfd985473caefdd6583eb42dbbc7f01918dc6827c808292bb74a5b6333e3d526c097c9351e694%23rd" target="_blank">&#x865A;&#x62DF;&#x673A;&#x6027;&#x80FD;&#x76D1;&#x63A7;&#x548C;&#x6545;&#x969C;&#x5904;&#x7406;&#x5DE5;&#x5177;</a></p>
+<ol>
+<li>JVM&#x8C03;&#x4F18;&#x7684;&#x5E38;&#x89C1;&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;&#x6709;&#x54EA;&#x4E9B;&#xFF1F;</li>
+</ol>
+<p><a href="https://link.zhihu.com/?target=https%3A//mp.weixin.qq.com/s%3F__biz%3DMzU4NDQ4MzU5OA%3D%3D%26mid%3D2247483926%26idx%3D1%26sn%3D224413da998f7e024f7b8d87397934d9%26chksm%3Dfd985477caefdd61a2fe1a3f0be29e057082252e579332f5b6d9072a150b838cefe2c47b6e5a%23rd" target="_blank">&#x6DF1;&#x5165;&#x7406;&#x89E3;&#x865A;&#x62DF;&#x673A;&#x4E4B;&#x7C7B;&#x6587;&#x4EF6;&#x7ED3;&#x6784;</a></p>
+<ol>
+<li>&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;Class&#x7C7B;&#x6587;&#x4EF6;&#x7ED3;&#x6784;&#xFF08;&#x5E38;&#x91CF;&#x6C60;&#x4E3B;&#x8981;&#x5B58;&#x653E;&#x7684;&#x662F;&#x90A3;&#x4E24;&#x5927;&#x5E38;&#x91CF;&#xFF1F;Class&#x6587;&#x4EF6;&#x7684;&#x7EE7;&#x627F;&#x5173;&#x7CFB;&#x662F;&#x5982;&#x4F55;&#x786E;&#x5B9A;&#x7684;&#xFF1F;&#x5B57;&#x6BB5;&#x8868;&#x3001;&#x65B9;&#x6CD5;&#x8868;&#x3001;&#x5C5E;&#x6027;&#x8868;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x90A3;&#x4E9B;&#x4FE1;&#x606F;&#xFF1F;&#xFF09;</li>
+</ol>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzU4NDQ4MzU5OA==&amp;mid=2247483934&amp;idx=1&amp;sn=f247f9bee4e240f5e7fac25659da3bff&amp;chksm=fd98547fcaefdd6996e1a7046e03f29df9308bdf82ceeffd111112766ffd3187892700f64b40#rd" target="_blank">&#x6DF1;&#x5165;&#x7406;&#x89E3;&#x865A;&#x62DF;&#x673A;&#x4E4B;&#x865A;&#x62DF;&#x673A;&#x7C7B;&#x52A0;&#x8F7D;&#x673A;&#x5236;</a></p>
+<ol>
+<li><p>&#x7B80;&#x5355;&#x8BF4;&#x8BF4;&#x7C7B;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;&#xFF0C;&#x91CC;&#x9762;&#x6267;&#x884C;&#x4E86;&#x54EA;&#x4E9B;&#x64CD;&#x4F5C;&#xFF1F;</p>
+</li>
+<li><p>&#x5BF9;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x6709;&#x4E86;&#x89E3;&#x5417;&#xFF1F;</p>
+</li>
+<li><p>&#x4EC0;&#x4E48;&#x662F;&#x53CC;&#x4EB2;&#x59D4;&#x6D3E;&#x6A21;&#x578B;&#xFF1F;</p>
+</li>
+<li><p>&#x53CC;&#x4EB2;&#x59D4;&#x6D3E;&#x6A21;&#x578B;&#x7684;&#x5DE5;&#x4F5C;&#x8FC7;&#x7A0B;&#x4EE5;&#x53CA;&#x4F7F;&#x7528;&#x5B83;&#x7684;&#x597D;&#x5904;&#x3002;</p>
+</li>
+</ol>
+<blockquote>
+<h3 id="&#x63A8;&#x8350;&#x9605;&#x8BFB;">&#x63A8;&#x8350;&#x9605;&#x8BFB;</h3>
+</blockquote>
+<p><a href="https://juejin.im/post/5aebcb076fb9a07a9a10b5f3" target="_blank">&#x6DF1;&#x5165;&#x7406;&#x89E3;&#x865A;&#x62DF;&#x673A;&#x4E4B;&#x865A;&#x62DF;&#x673A;&#x5B57;&#x8282;&#x7801;&#x6267;&#x884C;&#x5F15;&#x64CE;</a></p>
+<p><a href="http://www.54tianzhisheng.cn/2018/02/28/Java-Memory-Model/" target="_blank">&#x300A;&#x6DF1;&#x5165;&#x7406;&#x89E3; Java &#x5185;&#x5B58;&#x6A21;&#x578B;&#x300B;&#x8BFB;&#x4E66;&#x7B14;&#x8BB0;</a> &#xFF08;&#x975E;&#x5E38;&#x4E0D;&#x9519;&#x7684;&#x6587;&#x7AE0;&#xFF09;</p>
+<p><a href="https://blog.csdn.net/javazejian/article/details/72772461" target="_blank">&#x5168;&#x9762;&#x7406;&#x89E3;Java&#x5185;&#x5B58;&#x6A21;&#x578B;(JMM)&#x53CA;volatile&#x5173;&#x952E;&#x5B57; </a></p>
+<p><strong>&#x6B22;&#x8FCE;&#x5173;&#x6CE8;&#x6211;&#x7684;&#x5FAE;&#x4FE1;&#x516C;&#x4F17;&#x53F7;:&quot;Java&#x9762;&#x8BD5;&#x901A;&#x5173;&#x624B;&#x518C;&quot;&#xFF08;&#x4E00;&#x4E2A;&#x6709;&#x6E29;&#x5EA6;&#x7684;&#x5FAE;&#x4FE1;&#x516C;&#x4F17;&#x53F7;&#xFF0C;&#x671F;&#x5F85;&#x4E0E;&#x4F60;&#x5171;&#x540C;&#x8FDB;&#x6B65;~~~&#x575A;&#x6301;&#x539F;&#x521B;&#xFF0C;&#x5206;&#x4EAB;&#x7F8E;&#x6587;&#xFF0C;&#x5206;&#x4EAB;&#x5404;&#x79CD;Java&#x5B66;&#x4E60;&#x8D44;&#x6E90;&#xFF09;&#xFF1A;</strong></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/3/19/1623c870135a3609?w=215&amp;h=215&amp;f=jpeg&amp;s=29172" alt="&#x5FAE;&#x4FE1;&#x516C;&#x4F17;&#x53F7;"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Java基础知识.html" class="navigation navigation-prev " aria-label="Previous page: Java基础知识">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="搞定JVM垃圾回收就是这么简单.html" class="navigation navigation-next " aria-label="Next page: Java 垃圾回收">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Java虚拟机（jvm）","level":"1.2.7","depth":2,"next":{"title":"Java 垃圾回收","level":"1.2.8","depth":2,"path":"Java相关/搞定JVM垃圾回收就是这么简单.md","ref":"Java相关/搞定JVM垃圾回收就是这么简单.md","articles":[]},"previous":{"title":"Java基础知识","level":"1.2.6","depth":2,"path":"Java相关/Java基础知识.md","ref":"Java相关/Java基础知识.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Java相关/Java虚拟机（jvm）.md","mtime":"2018-08-30T06:14:58.211Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-30T09:34:49.634Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
