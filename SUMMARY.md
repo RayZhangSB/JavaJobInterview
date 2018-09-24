@@ -24,11 +24,11 @@
 * [Linux](操作系统/后端程序员必备的Linux基础知识.md)
 
 * [数据库]
-    * [Mysql](数据存储/MySQL/MySQL.md)
-        * [存储引擎](数据存储/MySQL/Engine.md)
-        * [索引](数据存储/MySQL/Index.md)
-        * [SQL优化](数据存储/MySQL/SQL.md)
-        * [事务](数据存储/MySQL/Transaction.md)
+    * [Mysql](数据存储/Mysql/MySQL.md)
+        * [存储引擎](数据存储/Mysql/Engine.md)
+        * [索引](数据存储/Mysql/Index.md)
+        * [SQL优化](数据存储/Mysql/SQL.md)
+        * [事务](数据存储/Mysql/Transaction.md)
     * [Redis]
         * [Redis 基础](数据存储/Redis.md)
         * [Redis 持久化精讲](数据存储/春夏秋冬又一春之Redis持久化.md)
